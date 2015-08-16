@@ -1,6 +1,6 @@
-package com.arkcraft.items;
+package com.quantumsheep.arkcraft.items;
 
-import com.arkcraft.lib.References;
+import com.quantumsheep.arkcraft.lib.References;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;

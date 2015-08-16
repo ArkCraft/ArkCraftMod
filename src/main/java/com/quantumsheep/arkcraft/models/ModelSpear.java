@@ -1,4 +1,4 @@
-package com.arkcraft.models;
+package com.quantumsheep.arkcraft.models;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -14,9 +14,9 @@ public class ModelSpear extends ModelBase
         textureHeight = 128;
 
         Shape1 = new ModelRenderer(this, 0, 0);
-        Shape1.addBox(0F, 0F, 0F, 1, 14, 1);
-        Shape1.setRotationPoint(0F, 10F, 0F);
-        Shape1.setTextureSize(128, 128);
+        Shape1.addBox(0F, 0F, 0F, 1, 1, 14);
+        Shape1.setRotationPoint(-1F, 0F, -7F);
+        Shape1.setTextureSize(64, 32);
         Shape1.mirror = true;
         setRotation(Shape1, 0F, 0F, 0F);
     }

@@ -1,4 +1,4 @@
-package com.arkcraft.lib;
+package com.quantumsheep.arkcraft.lib;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.monster.EntityZombie;

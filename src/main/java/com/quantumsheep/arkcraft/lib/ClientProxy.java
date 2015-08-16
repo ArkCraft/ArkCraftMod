@@ -1,10 +1,10 @@
-package com.arkcraft.lib;
+package com.quantumsheep.arkcraft.lib;
 
-import com.arkcraft.entity.EntityGiantSpider;
-import com.arkcraft.entity.EntitySpear;
-import com.arkcraft.models.ModelSpear;
-import com.arkcraft.render.RenderGiantSpider;
-import com.arkcraft.render.RenderSpear;
+import com.quantumsheep.arkcraft.entity.EntityGiantSpider;
+import com.quantumsheep.arkcraft.entity.EntitySpear;
+import com.quantumsheep.arkcraft.models.ModelSpear;
+import com.quantumsheep.arkcraft.render.RenderGiantSpider;
+import com.quantumsheep.arkcraft.render.RenderSpear;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.client.model.ModelBase;

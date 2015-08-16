@@ -1,11 +1,11 @@
-package com.arkcraft.render;
+package com.quantumsheep.arkcraft.render;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import com.arkcraft.entity.EntitySpear;
-import com.arkcraft.lib.References;
-import com.arkcraft.models.ModelSpear;
+import com.quantumsheep.arkcraft.entity.EntitySpear;
+import com.quantumsheep.arkcraft.lib.References;
+import com.quantumsheep.arkcraft.models.ModelSpear;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -35,7 +35,7 @@ public class RenderSpear extends Render
     public void renderSpear(EntitySpear entitySpear, double par2, double par4, double par6, float par8, float par9)
     {
         GL11.glPushMatrix();
-        GL11.glTranslatef((float)par2, (float)par4, (float)par6);
+        GL11.glTranslatef((float)par2, -1, (float)par6);
         GL11.glRotatef(180.0F - par8, 0.0F, 1.0F, 0.0F);
         GL11.glRotatef(entitySpear.prevRotationYaw + (entitySpear.rotationYaw - entitySpear.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
         GL11.glRotatef(entitySpear.prevRotationPitch + (entitySpear.rotationPitch - entitySpear.prevRotationPitch) * par9, 0.0F, 0.0F, 1.0F);

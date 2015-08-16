@@ -1,7 +1,7 @@
-package com.arkcraft.render;
+package com.quantumsheep.arkcraft.render;
 
-import com.arkcraft.entity.EntityGiantSpider;
-import com.arkcraft.lib.References;
+import com.quantumsheep.arkcraft.entity.EntityGiantSpider;
+import com.quantumsheep.arkcraft.lib.References;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;

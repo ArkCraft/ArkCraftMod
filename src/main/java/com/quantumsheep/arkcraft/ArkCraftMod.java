@@ -1,16 +1,17 @@
-package com.arkcraft;
+package com.quantumsheep.arkcraft;
 
 import java.awt.Color;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.arkcraft.entity.EntityGiantSpider;
-import com.arkcraft.entity.EntitySpear;
-import com.arkcraft.lib.CommonProxy;
-import com.arkcraft.lib.EntityEventHandler;
-import com.arkcraft.lib.References;
-import com.arkcraft.weapons.WeaponSpear;
+import com.quantumsheep.arkcraft.entity.EntityGiantSpider;
+import com.quantumsheep.arkcraft.entity.EntitySpear;
+import com.quantumsheep.arkcraft.items.ItemLongneckRifle;
+import com.quantumsheep.arkcraft.lib.CommonProxy;
+import com.quantumsheep.arkcraft.lib.EntityEventHandler;
+import com.quantumsheep.arkcraft.lib.References;
+import com.quantumsheep.arkcraft.weapons.WeaponSpear;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -22,11 +23,14 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 
@@ -49,8 +53,8 @@ public class ArkCraftMod {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		weaponSpear = new WeaponSpear().setUnlocalizedName("weaponSpear").setTextureName(References.MODID + ":weaponSpear").setCreativeTab(CreativeTabs.tabMaterials);
-		itemLongneckRifle = new WeaponSpear().setUnlocalizedName("itemLongneckRifle").setTextureName(References.MODID + ":itemLongneckRifle").setCreativeTab(CreativeTabs.tabMaterials);
+		weaponSpear = new WeaponSpear().setUnlocalizedName("weaponSpear").setTextureName(References.MODID + ":weaponSpear").setCreativeTab(this.tabArkCraft);
+		itemLongneckRifle = new ItemLongneckRifle().setUnlocalizedName("itemLongneckRifle").setTextureName(References.MODID + ":itemLongneckRifle").setCreativeTab(this.tabArkCraft);
 		
 		GameRegistry.registerItem(weaponSpear, "weapon_spear");
 		GameRegistry.registerItem(itemLongneckRifle, "itemLongneckRifle");
@@ -73,4 +77,12 @@ public class ArkCraftMod {
 	{
 
 	}
+	
+	public static CreativeTabs tabArkCraft = new CreativeTabs("tabArkCraft") {
+		@Override
+		@SideOnly(Side.CLIENT)
+		public Item getTabIconItem(){
+			return new ItemStack (weaponSpear).getItem();
+		}
+	};
 }

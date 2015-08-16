@@ -1,6 +1,6 @@
-package com.arkcraft.entity;
+package com.quantumsheep.arkcraft.entity;
 
-import com.arkcraft.ArkCraftMod;
+import com.quantumsheep.arkcraft.ArkCraftMod;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityMob;

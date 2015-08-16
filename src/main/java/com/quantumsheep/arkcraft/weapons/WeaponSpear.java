@@ -1,7 +1,7 @@
-package com.arkcraft.weapons;
+package com.quantumsheep.arkcraft.weapons;
 
-import com.arkcraft.ArkCraftMod;
-import com.arkcraft.entity.EntitySpear;
+import com.quantumsheep.arkcraft.ArkCraftMod;
+import com.quantumsheep.arkcraft.entity.EntitySpear;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -20,8 +20,12 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
 public class WeaponSpear extends Item {
   
+	public WeaponSpear(){
+        this.maxStackSize = 1;
+	}
+	
     public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int useTime)
-    {
+    {   
          int j = this.getMaxItemUseDuration(stack) - useTime;
          float f = (float)j / 5.0F;
          f = (f * f + f * 2.0F) / 3.0F;

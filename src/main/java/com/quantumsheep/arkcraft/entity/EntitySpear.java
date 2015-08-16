@@ -1,8 +1,8 @@
-package com.arkcraft.entity;
+package com.quantumsheep.arkcraft.entity;
 
 import java.util.List;
 
-import com.arkcraft.ArkCraftMod;
+import com.quantumsheep.arkcraft.ArkCraftMod;
 
 import java.util.List;
 
