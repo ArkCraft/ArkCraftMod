@@ -5,6 +5,7 @@ import java.awt.Color;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.quantumsheep.arkcraft.blocks.BlockWoodenDoor;
 import com.quantumsheep.arkcraft.entity.EntityGiantSpider;
 import com.quantumsheep.arkcraft.entity.EntitySpear;
 import com.quantumsheep.arkcraft.items.ItemLongneckRifle;
@@ -25,6 +26,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -48,6 +51,8 @@ public class ArkCraftMod {
 	
 	public static Item weaponSpear, itemLongneckRifle;
 	
+	public static Block blockWoodenDoor;
+	
 	public static final Logger LOGGER = LogManager.getLogger(References.NAME);
 	
 	@EventHandler
@@ -58,6 +63,10 @@ public class ArkCraftMod {
 		
 		GameRegistry.registerItem(weaponSpear, "weapon_spear");
 		GameRegistry.registerItem(itemLongneckRifle, "itemLongneckRifle");
+
+		blockWoodenDoor = new BlockWoodenDoor(Material.wood).setBlockName("blockWoodenDoor");
+
+		GameRegistry.registerBlock(blockWoodenDoor, "blockWoodenDoor");
 	}
 	
 	@EventHandler
