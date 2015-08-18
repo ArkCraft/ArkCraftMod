@@ -1,5 +1,6 @@
 package com.quantumsheep.arkcraft.items;
 
+import com.quantumsheep.arkcraft.ArkCraftMod;
 import com.quantumsheep.arkcraft.lib.References;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -7,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 
 public class ItemLongneckRifle extends Item
 {
@@ -15,6 +17,15 @@ public class ItemLongneckRifle extends Item
 		super();
 	}
 
+	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn)
+	{
+		if(worldIn.isRemote)
+		{
+			ArkCraftMod.zoomSniper = !ArkCraftMod.zoomSniper;
+		}
+	    return itemStackIn;
+	}
+	   
 	@Override
 	public void registerIcons(IIconRegister iconregister)
 	{
@@ -26,4 +37,6 @@ public class ItemLongneckRifle extends Item
 	{
 		return this.itemIcon;
 	}
+	
+	
 }

@@ -12,8 +12,10 @@ import com.quantumsheep.arkcraft.items.ItemLongneckRifle;
 import com.quantumsheep.arkcraft.lib.CommonProxy;
 import com.quantumsheep.arkcraft.lib.EntityEventHandler;
 import com.quantumsheep.arkcraft.lib.References;
+import com.quantumsheep.arkcraft.lib.TickClientHandlerEvent;
 import com.quantumsheep.arkcraft.weapons.WeaponSpear;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -67,6 +69,13 @@ public class ArkCraftMod {
 		blockWoodenDoor = new BlockWoodenDoor(Material.wood).setBlockName("blockWoodenDoor");
 
 		GameRegistry.registerBlock(blockWoodenDoor, "blockWoodenDoor");
+
+		
+		if(event.getSide().isClient())
+		{
+		FMLCommonHandler.instance().bus().register(new TickClientHandlerEvent());
+		MinecraftForge.EVENT_BUS.register(new TickClientHandlerEvent());
+		}
 	}
 	
 	@EventHandler

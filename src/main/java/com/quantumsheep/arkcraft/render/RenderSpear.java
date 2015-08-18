@@ -22,99 +22,37 @@ import net.minecraft.util.ResourceLocation;
 public class RenderSpear extends Render
 {
     private static final ResourceLocation SpearTextures = new ResourceLocation(References.MODID, "textures/models/ModelSpear.png");
-    private static final String __OBFID = "CL_00000978";
-
-    /**
-     * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
-     * handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic
-     * (Render<T extends Entity) and this method has signature public void func_76986_a(T entity, double d, double d1,
-     * double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
-     */
-    public void doRender(EntitySpear entitySpear, double par2, double par4, double par6, float par8, float par9)
+    private ModelSpear modelSpear = new ModelSpear();
+    
+    public RenderSpear()
     {
-        this.bindEntityTexture(entitySpear);
-        GL11.glPushMatrix();
-        GL11.glTranslatef((float)par2, (float)par4, (float)par6);
-        GL11.glRotatef(entitySpear.prevRotationYaw + (entitySpear.rotationYaw - entitySpear.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
-        GL11.glRotatef(entitySpear.prevRotationPitch + (entitySpear.rotationPitch - entitySpear.prevRotationPitch) * par9, 0.0F, 0.0F, 1.0F);
-        Tessellator tessellator = Tessellator.instance;
-        byte b0 = 0;
-        float f2 = 0.0F;
-        float f3 = 0.5F;
-        float f4 = (float)(0 + b0 * 10) / 32.0F;
-        float f5 = (float)(5 + b0 * 10) / 32.0F;
-        float f6 = 0.0F;
-        float f7 = 0.15625F;
-        float f8 = (float)(5 + b0 * 10) / 32.0F;
-        float f9 = (float)(10 + b0 * 10) / 32.0F;
-        float f10 = 0.05625F;
-        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-        float f11 = (float)entitySpear.arrowShake - par9;
+        this.shadowSize = 0.5F;
+    }
+    
+	public void renderSpear(EntitySpear entitySpear, double x, double y, double z, float f, float prt) {
+		GL11.glPushMatrix();
+		GL11.glTranslated(x, y, z); // On décale l'entité pour qu'elle soit au bon endroit
+		GL11.glTranslatef(0.0F, 1.4F, 0.0F); // Ici tu décales ton entité en fonction de ce que tu veux, pour moi mon model était trop bas, donc je l'ai monté de 1
+		GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F); // Ensuite tu modifies la rotation (NOTE : c'est mieux de faire la rotation après, NOTE 2 : mon model ne tournait pas en fonction de la direction de l'entité, il faut que tu le rajoutes toi-même)
+		this.bindEntityTexture(entitySpear); // On bind la texture
+		// Si tu veux augmenter la taille de ton model avec un glScale, c'est ici qu'il faut le faire
+		modelSpear.render(entitySpear, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+		GL11.glPopMatrix();
+	}
 
-        if (f11 > 0.0F)
-        {
-            float f12 = -MathHelper.sin(f11 * 3.0F) * f11;
-            GL11.glRotatef(f12, 0.0F, 0.0F, 1.0F);
-        }
-
-        GL11.glRotatef(45.0F, 1.0F, 0.0F, 0.0F);
-        GL11.glScalef(f10, f10, f10);
-        GL11.glTranslatef(-4.0F, 0.0F, 0.0F);
-        GL11.glNormal3f(f10, 0.0F, 0.0F);
-        tessellator.startDrawingQuads();
-        tessellator.addVertexWithUV(-7.0D, -2.0D, -2.0D, (double)f6, (double)f8);
-        tessellator.addVertexWithUV(-7.0D, -2.0D, 2.0D, (double)f7, (double)f8);
-        tessellator.addVertexWithUV(-7.0D, 2.0D, 2.0D, (double)f7, (double)f9);
-        tessellator.addVertexWithUV(-7.0D, 2.0D, -2.0D, (double)f6, (double)f9);
-        tessellator.draw();
-        GL11.glNormal3f(-f10, 0.0F, 0.0F);
-        tessellator.startDrawingQuads();
-        tessellator.addVertexWithUV(-7.0D, 2.0D, -2.0D, (double)f6, (double)f8);
-        tessellator.addVertexWithUV(-7.0D, 2.0D, 2.0D, (double)f7, (double)f8);
-        tessellator.addVertexWithUV(-7.0D, -2.0D, 2.0D, (double)f7, (double)f9);
-        tessellator.addVertexWithUV(-7.0D, -2.0D, -2.0D, (double)f6, (double)f9);
-        tessellator.draw();
-
-        for (int i = 0; i < 4; ++i)
-        {
-            GL11.glRotatef(90.0F, 1.0F, 0.0F, 0.0F);
-            GL11.glNormal3f(0.0F, 0.0F, f10);
-            tessellator.startDrawingQuads();
-            tessellator.addVertexWithUV(-8.0D, -2.0D, 0.0D, (double)f2, (double)f4);
-            tessellator.addVertexWithUV(8.0D, -2.0D, 0.0D, (double)f3, (double)f4);
-            tessellator.addVertexWithUV(8.0D, 2.0D, 0.0D, (double)f3, (double)f5);
-            tessellator.addVertexWithUV(-8.0D, 2.0D, 0.0D, (double)f2, (double)f5);
-            tessellator.draw();
-        }
-
-        GL11.glDisable(GL12.GL_RESCALE_NORMAL);
-        GL11.glPopMatrix();
+	protected ResourceLocation getEntityTexture(EntitySpear entitySpear) {
+		return SpearTextures;
+	}
+	
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.getEntityTexture((EntitySpear)entity);
     }
 
-    /**
-     * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
-     */
-    protected ResourceLocation getEntityTexture(EntitySpear entitySpear)
+    @Override
+    public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
     {
-        return SpearTextures;
-    }
-
-    /**
-     * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
-     */
-    protected ResourceLocation getEntityTexture(Entity p_110775_1_)
-    {
-        return this.getEntityTexture((EntitySpear)p_110775_1_);
-    }
-
-    /**
-     * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
-     * handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic
-     * (Render<T extends Entity) and this method has signature public void func_76986_a(T entity, double d, double d1,
-     * double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
-     */
-    public void doRender(Entity entitySpear, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_)
-    {
-        this.doRender((EntitySpear)entitySpear, p_76986_2_, p_76986_4_, p_76986_6_, p_76986_8_, p_76986_9_);
+        this.renderSpear((EntitySpear)entity, par2, par4, par6, par8, par9);
     }
 }
